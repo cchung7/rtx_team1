@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,booktabs,hyperref,cleveref,xcolor}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{caption}
+
+\hypersetup{% Sets up default colors for hyperlinks in the document
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\captionsetup[table]{skip=6pt}
+\setlist[itemize]{left=0pt..1.5em}
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\title{Project Management Plan\\\large City Level Air Quality Prediction (CLAP)}
+\author{Group 1}
+\date{Fall 2025}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document defines organization, lifecycle, risks, resources, schedule, monitoring and control, professional standards, and configuration management for the CLAP application.
+\end{abstract}
+
+\section{}
+SE 4485: Software Engineering Projects
+
+Fall 2025
+
+Project Management Plan
+
+ABSTRACT
+
+This document defines team organization, lifecycle model, risks, required resources, scheduled deliverables, professional guidelines, and configuration management for the City Level Air Quality Prediction (CLAP) Application.
+
+\section{TABLE OF CONTENTS}
+Introduction
+
+Project Organization
+
+Lifecycle Model Used
+
+Risk Analysis
+
+Software And Hardware Resource Requirements
+
+Deliverables and Schedule
+
+Monitoring, Reporting, and Controlling Mechanisms
+
+Professional Standards
+
+Evidence of Configuration Management
+
+\section{LIST OF FIGURES}
+TBD
+
+\section{LIST OF TABLES}
+TBD
+
+INTRODUCTION
+
+This document provides a project plan for the development of the City Level Air Quality Prediction (CLAP) Application. The purpose of the document is to outline how CLAP will be designed, developed and deployed. The scope of the document is to define the structure, design, and management for the development of the CLAP system. The CLAP system is a predictive analytics application designed to predict future AQI category for a single U.S. city using historical AQI and weather data. CLAP can be utilized as an educational tool for students interested in building similar projects. Depending on the quality of data provided, CLAP will be capable of anticipating future weather trends, which may provide actionable insights for users. This document is organized as follows: project organization, lifecycle, risk analysis, tools, deliverables, project management, professional standards and configuration management.
+
+\section{PROJECT ORGANIZATION}
+Team Members and Roles:
+
+\begin{center}
+    \begin{tabular}{l @{\hskip 1em} l @{\hskip 0.5in} l @{\hskip 0.5in} l}
+        Jay Chung       & (cwc130330) & - & Group 1 Team leader, Software \& AI Engineer\\
+        AJ Kimbrough    & (ank210005) & - & Group 1 Lead Architect, Software \& AI Engineer\\
+        Amelia Quinn    & (qcb220000) & - & Software \& AI Engineer\\
+        Kevin Melo      & (ksm220005) & - & Software \& AI Engineer\\
+        David Santos    & (des210001) & - & Software \& AI Engineer\\
+        Andrew Einright & (ame210008) & - & Software \& AI Engineer\\
+    \end{tabular}
+\end{center}
+
+The team currently consists of 6 software engineers assigned to a single group. This is just a temporary arrangement until we figure out the project workload. The rationale for this arrangement is that we do not know how many modules there are for this project, therefore it is meaningless to try and assign groups for work that does not yet exist. After we establish specific requirements for the project and can understand the project’s architecture and design, we will divide our workload by separating the team into multiple groups. As of now, our plan will likely be to undergo continuous iterative development as one group until we figure out the project’s requirements and specifications. I believe that this will encourage communication, ensuring that everyone is on the same page.
+
+\section{LIFECYCLE MODEL USED}
+Our team has chosen an iterative lifecycle model to guide the development of the project, as it allows us to refine the system through repeated cycles of feedback and improvement. This approach is good for demonstrating the project as a proof of concept, since it enables early validation while progressively enhancing non-functional requirements.
+
+\section{RISK ANALYSIS}
+\section{SOFTWARE AND HARDWARE RESOURCE REQUIREMENTS}
+We are currently exploring our software options until specific requirements are set in place. We believe that the key to successfully completing this project is to keep things simple. We plan on developing, testing and deploying the project application using software downloaded on our student laptops. To keep things simple, the database will likely require one or two tables for holding AQI data. Cloud service may not even be required. We will be using GitHub for configuration management for simplicity. We are considering creating a video of our demonstration as a contingency measure.
+
+Software:
+
+Python – Many of our members are proficient at utilizing this language.
+
+SQLite database – Some of our members are proficient at utilizing this database.
+
+GitHub for CI/CD – For simplicity and ease of use.
+
+Hardware:
+
+Student laptop – For simplicity and ease of use.
+
+\section{DELIVERABLES AND SCHEDULE}
+\section{MONITORING, REPORTING, AND CONTROLLING MECHANISMS}
+Weekly Attendance Reports must be produced based on Weekly Progress Meetings with the sponsors, to be submitted every Friday of that week.
+
+Weekly Sponsor Reports are recommended at least once every week.
+
+GitHub is recommended for version control and configuration management.
+
+Weekly Status Reports are recommended for scheduling and meeting important deadlines.
+
+\section{PROFESSIONAL STANDARDS}
+Academic integrity
+
+Respect for all team members
+
+Equal distribution of workload
+
+Timely delivery of assigned tasks
+
+Good behavior (e.g. not missing deadlines and not submitting poor quality work)
+
+\section{EVIDENCE THE DOCUMENT HAS BEEN PLACED UNDER CONFIGURATION MANAGEMENT}
+\href{https://github.com/cchung7/rtx_team1/blob/main/group1-Project%20Management%20Plan.docx}{\underline{Project Management Plan on GitHub}}
+
+ENGINEERING STANDARDS AND MULTIPLE CONSTRAINTS
+
+IEEE Std 1058-1998: Software Project Management Plans 
+
+PMBOK® Guide: Project Management Body of Knowledge 
+
+IEEE Std 12207: Software Life Cycle Processes 
+
+IEEE Std 15939: Measurement Process 
+
+ISO/IEC/IEEE Std 29148-2018: Systems and Software Engineering
+
+§  Life Cycle Processes
+
+§  Requirements Engineering 
+
+ADDITIONAL REFERENCES
+
+Larson, E. and Gray, C., 2014. Project Management: The Managerial Process. McGraw Hill
+
+Humphrey, W.S. and Thomas, W.R., 2010. Reflections on Management: How to Manage Your Software Projects, Your Teams, Your Boss, and Yourself. Pearson Education
+
+Appendix A.
+
+The following provides a professional standards guideline for the teams. This guideline may be tailored.
+
+Guideline:
+
+On the first occurrence of unacceptable behavior, determine the circumstances involved, resolve the problem, and document the event in the meeting minutes.
+
+On a second occurrence, notify the instructor of the problem. A meeting will be set up to evaluate the situation and resolve the problem.
+
+On a third occurrence, again notify the instructor of the problem. A meeting will be set up to evaluate the situation and resolve the problem. At this point, the team will have the option of removing the team member. If removed, then the team member receives a pro-rated grade based on the number of weeks they have participated in the group.
+
+Examples of unacceptable behavior may include not delivering on time, delivering poor quality work, missing team meetings, being unprepared for team meetings, disrespectful or rude behavior, etc. Reasons such as “too busy” or “I forgot”, or “my dog ate my design model” are unacceptable.
+
+Valid reasons that must be considered include those listed for obtaining an incomplete standing in a course (illness, death in the family, travel for business or academic reasons, etc.)
+
+
+
+\end{document}
