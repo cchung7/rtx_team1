@@ -1,0 +1,29 @@
+\section{Risk Analysis}
+
+Table~\ref{tab:risk} summarizes key risks, their likelihood and impact, and planned mitigations and rationale.
+\linebreak
+
+\begingroup
+    \hyphenpenalty=10000
+    \exhyphenpenalty=10000
+    \small
+    \setlength{\LTpre}{0pt}
+    \setlength{\LTpost}{0pt}
+    \begin{longtable}{@{}p{2.4cm}<{\raggedright} p{1.8cm}<{\raggedright} p{1.2cm}<{\raggedright} p{4.1cm}<{\raggedright} p{4.2cm}<{\raggedright}@{}}
+        \hline
+        \textbf{Risk} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Mitigation} & \textbf{Rationale} \\
+        \hline
+        \arrayrulecolor{gray!30}
+        
+        Implementation Complexity   & $<50\%$   & $>50\%$   & Maintain one-city scope; decompose features; spike high-risk items early                                      & If scope expands beyond requirements, complexity increases and schedule risk grows. \\
+        \hline
+        AQI Data Inconsistency      & $<50\%$   & $>50\%$   & Validate datasets; impute or exclude bad records; track data provenance; cross-check with secondary sources   & If historical AQI data is inconsistent or unreliable, model accuracy degrades and decisions may be misguided. \\
+        \hline
+        API Unavailability          & $<25\%$   & $>50\%$   & Cache recent data; implement retries/timeouts; provide offline mode using last-known-good                     & If the AQI data API is unavailable, the system cannot retrieve data and functionality is limited. \\
+        \hline
+        Lack of Team Coordination   & $<50\%$   & $<50\%$   & Weekly meetings; weekly status reports; clear task ownership; sponsor communication                           & Without consistent communication, development may stall and error rates increase. \\
+
+        \arrayrulecolor{black}
+        \hline
+    \end{longtable}
+\endgroup
