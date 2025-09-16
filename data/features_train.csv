@@ -1,0 +1,4 @@
+city_id,date,aqi_val_t,aqi_val_t_1,aqi_val_t_2,wx_max_temp_t1,wx_min_temp_t1,wx_mean_temp_t1,wx_mean_rh_t1,wx_mean_wind_t1,wx_max_pop_t1,has_smoke,has_haze,has_rain,is_weekend_t1,y_cat_t1
+DAL-TX,2025-09-09,60,,,,,,,,,,,,0,Good
+DAL-TX,2025-09-10,48,60.0,,,,,,,,,,,0,Moderate
+DAL-TX,2025-09-11,82,48.0,60.0,91.0,75.0,83.0,0.55,9.0,0.2,0.0,0.0,0.0,0,
