@@ -1,6 +1,3 @@
-<contents above>
-cat > .gitignore <<'EOF'
-
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -16,6 +13,7 @@ node_modules/
 build/
 dist/
 *.log
+*.sqlite*
 EOF
 
 

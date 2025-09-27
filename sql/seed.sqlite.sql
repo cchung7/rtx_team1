@@ -1,0 +1,21 @@
+--Test data for AQI Predictor pipeline
+
+--Clear existing rows
+DELETE FROM aqi_daily;
+DELETE FROM wx_forecast;
+DELETE FROM features_train;
+
+--AQI history - 3 days
+INSERT INTO aqi_daily (city_id, date, aqi_value, aqi_category, primary_pollutant)
+VALUES
+  ('DAL-TX', '2025-09-09', 60, 'Moderate', 'PM2.5'),
+  ('DAL-TX', '2025-09-10', 48, 'Good', 'PM2.5'),
+  ('DAL-TX', '2025-09-11', 82, 'Moderate', 'Ozone');
+
+--Weather forecast for next day - t+1 = 2025-09-12
+INSERT INTO wx_forecast (city_id, date, features_json)
+VALUES
+  ('DAL-TX', '2025-09-12',
+   '{"max_temp": 91, "min_temp": 75, "mean_temp": 83,
+     "mean_rh": 0.55, "mean_wind": 9.0,
+     "max_pop": 0.2, "has_smoke": 0, "has_haze": 0, "has_rain": 0}');
