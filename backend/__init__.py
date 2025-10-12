@@ -1,4 +1,0 @@
-"""
-CLAP Backend Module
-"""
-
