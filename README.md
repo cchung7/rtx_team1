@@ -93,7 +93,7 @@ curl -X POST http://localhost:5001/api/aqi/predict \
 
 ## License
 
-This project is part of SE 4485.001 coursework at the University of Houston.
+This project is part of SE 4485.001 coursework at the University of Texas at Dallas.
 
 ## Technical Details
 
