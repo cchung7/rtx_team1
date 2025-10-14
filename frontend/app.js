@@ -88,6 +88,7 @@ function getCategoryColor(category) {
 // API Functions
 async function fetchCounties() {
     try {
+        // HTTP GET request for county list
         const response = await fetch(`${API_BASE_URL}/counties`);
         const data = await response.json();
         
