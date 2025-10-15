@@ -106,3 +106,7 @@ This project is part of SE 4485.001 coursework at the University of Texas at Dal
 ---
 
 For detailed installation instructions, see [INSTALL.md](INSTALL.md)
+
+---
+
+For requirements information, see [REQUIREMENTS.md](REQUIREMENTS.md)
