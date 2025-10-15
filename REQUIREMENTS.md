@@ -1,5 +1,3 @@
----
-
 ### FUNCTIONAL REQUIREMENTS:
 1.	Data Ingestion:
 - FR-1.1: The system shall utilize daily AQI data from the Environmental Protection Agency (EPA), ingested manually from provided datasets.
