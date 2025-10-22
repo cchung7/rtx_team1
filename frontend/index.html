@@ -38,9 +38,16 @@
             <!-- Runs "app.js" and calls "fetchCounties()"-->
                 <div class="form-group">
                     <label for="county-select">County:</label>
-                    <select id="county-select" class="form-control" aria-label="Select county">
-                        <option value="">-- Select a County --</option>
-                    </select>
+                    <!-- adding searchbar to counties for ease of use-->
+                    <div class="custom-dropdown">
+                        <input 
+                            type="text" 
+                            id="county-search" 
+                            placeholder="Search or select a county..." 
+                            autocomplete="off"
+                        />
+                        <div id="county-dropdown" class="dropdown-list hidden"></div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="forecast-days">Forecast Period:</label>

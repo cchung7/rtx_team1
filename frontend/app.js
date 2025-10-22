@@ -344,20 +344,105 @@ function displayChartStatistics(aqiValues) {
         </div>
     `;
 }
+function populateCountySelect(counties) {
+    window.allCounties = counties || [];
+
+    const dropdown = document.getElementById("county-dropdown");
+    if (!dropdown) return;
+    dropdown.classList.add('hidden'); 
+}
+
+function renderCountyDropdown(counties) {
+    const dropdown = document.getElementById('county-dropdown');
+    dropdown.innerHTML = '';
+
+    if (!counties || counties.length === 0) {
+        dropdown.classList.add('hidden');
+        return;
+    }
+
+    dropdown.classList.remove('hidden');
+
+    counties.forEach((c, idx) => {
+        const item = document.createElement('div');
+        item.className = 'dropdown-item';
+        item.textContent = c.display_name;
+        item.dataset.index = idx;
+        item.tabIndex = 0;
+
+        item.addEventListener('click', () => {
+            document.getElementById('county-search').value = c.display_name;
+            dropdown.classList.add('hidden');
+            currentCounty = c.county;
+            currentState = c.state;
+
+            if (countySelect) {
+                for (let i = 0; i < countySelect.options.length; i++) {
+                    if (countySelect.options[i].textContent === c.display_name) {
+                        countySelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            activeDropdownIndex = -1;
+        });
+
+        dropdown.appendChild(item);
+    });
+}
+
+function filterCounties(term) {
+    if (!term) return window.allCounties.slice();
+    const t = term.toLowerCase();
+    return window.allCounties.filter(c => c.display_name.toLowerCase().includes(t));
+}
+
+function renderFiltered(term) {
+    const filtered = filterCounties(term);
+    renderCountyDropdown(filtered);
+
+    const dropdown = document.getElementById('county-dropdown');
+
+    // Hide dropdown if no matches
+    if (filtered.length === 0) {
+        dropdown.classList.add('hidden');
+        currentCounty = null;
+        currentState = null;
+        if (countySelect) countySelect.selectedIndex = 0;
+    } else {
+        dropdown.classList.remove('hidden');
+    }
+}
+
+function setupCountySearch() {
+    const searchInput = document.getElementById('county-search');
+    const dropdown = document.getElementById('county-dropdown');
+    if (!searchInput || !dropdown) return;
+    if (!window.allCounties) window.allCounties = [];
+
+    // Input 
+    searchInput.addEventListener('input', () => renderFiltered(searchInput.value.trim()));
+
+    // Show list on focus
+    searchInput.addEventListener('focus', () => renderCountyDropdown(window.allCounties));
+
+    // close if click outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.custom-dropdown')) dropdown.classList.add('hidden');
+    });
+}
 
 // Event Handlers
 async function handleLoadData() {
-    const selectedValue = countySelect.value;
     
-    if (!selectedValue) {
+    if (!currentCounty || !currentState) {
         showError('Please select a county first');
         return;
     }
     
-    const { county, state } = JSON.parse(selectedValue);
-    currentCounty = county;
-    currentState = state;
-    
+    const county = currentCounty;
+    const state = currentState;
+
     showLoading(true);
     hideError();
     
@@ -383,17 +468,14 @@ async function handleLoadData() {
 }
 
 async function handleRefresh() {
-    const selectedValue = countySelect.value;
     
-    if (!selectedValue) {
+    if (!currentCounty || !currentState) {
         showError('Please select a county first');
         return;
     }
     
-    const { county, state } = JSON.parse(selectedValue);
-    currentCounty = county;
-    currentState = state;
-    
+    const county = currentCounty;
+    const state = currentState;
     const forecastDays = parseInt(forecastDaysSelect.value);
     
     showLoading(true);
@@ -625,6 +707,7 @@ async function initializeApp() {
     // Load counties and model info on startup
     try {
         await fetchCounties();
+        setupCountySearch();    
         await updateModelInfo();
         console.log('Dashboard initialized successfully');
     } catch (error) {
