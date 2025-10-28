@@ -1,4 +1,4 @@
-# CLAP - County-level Air Quality Prediction System
+# CLAP_V1.1 - County-level Air Quality Prediction System
 
 A machine learning-powered web application that predicts Air Quality Index (AQI) for counties across the United States with multi-day forecasting capabilities.
 
