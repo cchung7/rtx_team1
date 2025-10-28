@@ -23,7 +23,7 @@ A machine learning-powered web application that predicts Air Quality Index (AQI)
 
 ### Prerequisites
 - Python 3.13+
-- Git
+- Node.js v22.21.0+
 
 ### Installation
 
@@ -62,6 +62,7 @@ clap-project/
 
 - `GET /api/health` - Health check
 - `GET /api/counties` - List available counties
+- `GET /api/categories` - List AQI categories
 - `GET /api/aqi/historical` - Historical AQI data
 - `POST /api/aqi/predict` - Generate predictions
 - `GET /api/model/metrics` - Model performance metrics
@@ -75,7 +76,7 @@ curl -X POST http://localhost:5001/api/aqi/predict \
   -d '{"county": "Dallas", "state": "Texas", "model": "balanced", "days": 1}'
 ```
 
-### Multi-Day Forecast
+### Multi-Day Forecast (Optional)
 ```bash
 curl -X POST http://localhost:5001/api/aqi/predict \
   -H "Content-Type: application/json" \
@@ -99,7 +100,7 @@ This project is part of SE 4485.001 coursework at the University of Texas at Dal
 
 - **Framework**: Flask (Python)
 - **ML Library**: LightGBM
-- **Frontend**: HTML5, CSS3, JavaScript, Chart.js
+- **Frontend**: React, HTML5, CSS3, JavaScript, Chart.js
 - **Data Source**: EPA AQI datasets (2024)
 - **Deployment**: Local development server (port 5001)
 
