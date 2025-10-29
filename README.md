@@ -87,7 +87,7 @@ curl -X POST http://localhost:5001/api/aqi/predict \
 
 - **David Santos** - Project Lead
 - **Amelia Quinn** - Testing & QA
-- **Kevin Melo** - Performance Optimization
+- **Kevin Melo** - Performance Optimization  
 - **AJ Kimbrough** - Deployment & Infrastructure
 - **Andrew Enright** - UI/UX Development
 - **Jay Chung** - Model Research & Enhancement
