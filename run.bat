@@ -6,6 +6,13 @@ echo CLAP - Air Quality Prediction System
 echo ==========================================
 echo.
 
+REM Anchor to script’s folder
+cd /d "%~dp0"
+set "ROOT=%CD%"
+set "VENV=%ROOT%\venv"
+set "FRONTEND=%ROOT%\frontend"
+set "BACKEND=%ROOT%\backend"
+
 REM Check if Python is installed
 python --version >nul 2>&1
 if errorlevel 1 (
@@ -19,7 +26,8 @@ echo.
 REM Check if virtual environment exists
 if not exist "venv" (
     echo Creating virtual environment...
-    python -m venv venv
+    echo.
+    py -3.12 -m venv venv
 )
 
 REM Activate virtual environment
@@ -29,12 +37,18 @@ call venv\Scripts\activate.bat
 REM Install dependencies
 echo.
 echo Installing dependencies...
-pip install -q --upgrade pip
-pip install -q -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 
 echo.
 echo OK Dependencies installed
 echo.
+
+REM Build React frontend
+cd frontend
+call npm install
+call npm run build
+cd ..
 
 REM Check if .env exists
 if not exist ".env" (
