@@ -101,15 +101,15 @@ export default function App() {
         <section className="card shadow-md hover:shadow-xl border border-slate-200 transition-shadow">
           <h2 className="section-title">Select Location & Model</h2>
           <div className="grid md:grid-cols-4 gap-4">
-            <Select id="model" label="Model" value={model} onChange={v => { setModel(v); doRefresh(selected, days, v); }}>
+            <Select id="model" label="Model" value={model} onChange={v => { setModel(v); }}>
               <option value="balanced">LightGBM</option>
             </Select>
 
-            <Select id="county" label="County" value={selected} onChange={v => { setSelected(v); doRefresh(v, days, model); }}>
+            <Select id="county" label="County" value={selected} onChange={v => { setSelected(v); }}>
               {countyOptions.map(o => <option key={o.value || "blank"} value={o.value}>{o.label}</option>)}
             </Select>
 
-            <Select id="days" label="Forecast Period" value={String(days)} onChange={v => { const d = Number(v); setDays(d); doRefresh(selected, d, model); }}>
+            <Select id="days" label="Forecast Period" value={String(days)} onChange={v => { const d = Number(v); setDays(d); }}>
               <option value="1">Next Day</option>
             </Select>
 
