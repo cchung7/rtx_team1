@@ -54,21 +54,6 @@ export default function App() {
     })();
   }, [model]);
 
-  async function doLoad(val) {
-    if (!val) return setErr("Please select a county first");
-    try {
-      setErr(""); setLoading(true);
-      const { county, state } = JSON.parse(val);
-      const hist = await getHistorical({ county, state, days: 30 });
-      setHistory(hist);
-      setPrediction(null);
-    } catch (e) {
-      setErr(e.message);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   async function doRefresh(val = selected, forecastDays = days, modelKey = model) {
     if (!val) return setErr("Please select a county first");
     try {
@@ -128,13 +113,10 @@ export default function App() {
               <option value="1">Next Day</option>
             </Select>
 
-            <div className="flex items-end gap-3">
+            <div className="flex items-center justify-center mt-7">
               {/* add 3D + gloss */}
-              <button className="btn btn-3d btn-gloss btn-primary w-full btn-lg" onClick={() => doRefresh()}>
-                🔮 Generate Forecast
-              </button>
-              <button className="btn btn-3d btn-gloss btn-secondary w-full btn-lg" onClick={() => doLoad(selected)}>
-                📊 Load Data
+              <button className="btn btn-3d btn-gloss btn-primary h-[48px] px-6 flex items-center justify-center whitespace-nowrap rounded-lg" onClick={() => doRefresh()}>
+                Refresh Forecast
               </button>
             </div>
           </div>
