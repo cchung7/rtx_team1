@@ -1,4 +1,4 @@
-import { use, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Select from "./components/Select";
 import Spinner from "./components/Spinner";
 import ErrorAlert from "./components/ErrorAlert";
@@ -13,8 +13,7 @@ import clapLogo from "./assets/clap_logo.png";
 
 export default function App() {
   const [counties, setCounties] = useState([]);
-  const [filteredCounties, setFilteredCounties] = useState([]);
-  const [selectedTerritory, setSelectedTerritory] = useState("-- Select a Territory --");
+  const [territory, setTerritory] = useState("");
   const [selectedCounty, setSelectedCounty] = useState("");
   const [model, setModel] = useState("balanced");
   const [days, setDays] = useState(1);
@@ -27,34 +26,28 @@ export default function App() {
   const [metrics, setMetrics] = useState(null);
 
   const territoryOptions = useMemo(() => {
-    setFilteredCounties(counties);
-    return ["-- Select a Territory --"].concat(
-      counties.reduce((acc, c) => {
-        if (!acc.includes(c.state)) acc.push(c.state);
-          return acc;
-      }, [])
+    const unique = counties.reduce((acc, c) => {
+      if (c.state && !acc.includes(c.state)) acc.push(c.state);
+      return acc;
+    }, []);
+    unique.sort();
+    return [{ label: "-- Select a State --", value: "" }].concat(
+      unique.map((s) => ({ label: s, value: s }))
     );
   }, [counties]);
 
-  const setFilteredCountiesActual = useEffect(() => {
-    if (selectedTerritory === "-- Select a Territory --") {
-      setFilteredCounties(counties);
-    } else {
-      setFilteredCounties(counties.filter(c => c.state === selectedTerritory));
-    }
-  }, [selectedTerritory]);
-  
   const countyOptions = useMemo(() => {
-    console.log("Selecting counties for territory:", selectedTerritory);
-    console.log("Available counties:", counties);
-    console.log("Filtered counties:", filteredCounties);
+    const visible = territory
+      ? counties.filter((c) => c.state === territory)
+      : counties;
+    
     return [{ label: "-- Select a County --", value: "" }].concat(
-      filteredCounties.map(c => ({
+      visible.map(c => ({
         label: c.display_name || `${c.county} County, ${c.state}`,
         value: JSON.stringify({ county: c.county, state: c.state }),
       }))
     );
-  }, [filteredCounties]);
+  }, [counties, territory]);
 
   useEffect(() => {
     let mounted = true;
@@ -128,8 +121,8 @@ export default function App() {
               <option value="balanced">LightGBM</option>
             </Select>
 
-            <Select id="territory" label="Territory" value={selectedTerritory} onChange={v => { setSelectedTerritory(v); setFilteredCountiesActual(); }}>
-              {territoryOptions.map(o => <option key={o || "blank"} value={o}>{o}</option>)}
+            <Select id="territory" label="State" value={territory} onChange={v => { setTerritory(v); setSelectedCounty(""); }}>
+              {territoryOptions.map(o => <option key={o.value || "blank"} value={o.value}>{o.label}</option>)}
             </Select>
             
             <Select id="county" label="County" value={selectedCounty} onChange={v => { setSelectedCounty(v); }}>
@@ -140,9 +133,8 @@ export default function App() {
               <option value="1">Next Day</option>
             </Select>
 
-            <div className="flex items-center justify-center mt-7">
-              {/* add 3D + gloss */}
-              <button className="btn btn-3d btn-gloss btn-primary h-[48px] px-6 flex items-center justify-center whitespace-nowrap rounded-lg" onClick={() => doRefresh()}>
+            <div className="col-span-4 flex justify-center mt-6">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-10 rounded-lg shadow-md transition-transform transform hover:scale-105" onClick={() => doRefresh()}>
                 Refresh Forecast
               </button>
             </div>
