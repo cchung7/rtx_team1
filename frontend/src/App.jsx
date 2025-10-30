@@ -178,7 +178,7 @@ export default function App() {
 
         {/* Model Information */}
           <StatsStrip
-            algorithm="LightGBM Regressor(Gradient Boosting Decision Tree)"
+            algorithm="LightGBM"
             mse={metrics?.mse}
             rmse={metrics?.rmse}
             r2={metrics?.r2}
