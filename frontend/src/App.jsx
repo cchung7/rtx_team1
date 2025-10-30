@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { use, useEffect, useMemo, useState } from "react";
 import Select from "./components/Select";
 import Spinner from "./components/Spinner";
 import ErrorAlert from "./components/ErrorAlert";
@@ -13,7 +13,9 @@ import clapLogo from "./assets/clap_logo.png";
 
 export default function App() {
   const [counties, setCounties] = useState([]);
-  const [selected, setSelected] = useState("");
+  const [filteredCounties, setFilteredCounties] = useState([]);
+  const [selectedTerritory, setSelectedTerritory] = useState("-- Select a Territory --");
+  const [selectedCounty, setSelectedCounty] = useState("");
   const [model, setModel] = useState("balanced");
   const [days, setDays] = useState(1);
 
@@ -24,14 +26,35 @@ export default function App() {
   const [prediction, setPrediction] = useState(null);
   const [metrics, setMetrics] = useState(null);
 
+  const territoryOptions = useMemo(() => {
+    setFilteredCounties(counties);
+    return ["-- Select a Territory --"].concat(
+      counties.reduce((acc, c) => {
+        if (!acc.includes(c.state)) acc.push(c.state);
+          return acc;
+      }, [])
+    );
+  }, [counties]);
+
+  const setFilteredCountiesActual = useEffect(() => {
+    if (selectedTerritory === "-- Select a Territory --") {
+      setFilteredCounties(counties);
+    } else {
+      setFilteredCounties(counties.filter(c => c.state === selectedTerritory));
+    }
+  }, [selectedTerritory]);
+  
   const countyOptions = useMemo(() => {
+    console.log("Selecting counties for territory:", selectedTerritory);
+    console.log("Available counties:", counties);
+    console.log("Filtered counties:", filteredCounties);
     return [{ label: "-- Select a County --", value: "" }].concat(
-      counties.map(c => ({
+      filteredCounties.map(c => ({
         label: c.display_name || `${c.county} County, ${c.state}`,
         value: JSON.stringify({ county: c.county, state: c.state }),
       }))
     );
-  }, [counties]);
+  }, [filteredCounties]);
 
   useEffect(() => {
     let mounted = true;
@@ -54,7 +77,7 @@ export default function App() {
     })();
   }, [model]);
 
-  async function doRefresh(val = selected, forecastDays = days, modelKey = model) {
+  async function doRefresh(val = selectedCounty, forecastDays = days, modelKey = model) {
     if (!val) return setErr("Please select a county first");
     try {
       setErr(""); setLoading(true);
@@ -101,15 +124,19 @@ export default function App() {
         <section className="card shadow-md hover:shadow-xl border border-slate-200 transition-shadow">
           <h2 className="section-title">Select Location & Model</h2>
           <div className="grid md:grid-cols-4 gap-4">
-            <Select id="model" label="Model" value={model} onChange={v => { setModel(v); doRefresh(selected, days, v); }}>
+            <Select id="model" label="Model" value={model} onChange={v => { setModel(v); }}>
               <option value="balanced">LightGBM</option>
             </Select>
 
-            <Select id="county" label="County" value={selected} onChange={v => { setSelected(v); doRefresh(v, days, model); }}>
+            <Select id="territory" label="Territory" value={selectedTerritory} onChange={v => { setSelectedTerritory(v); setFilteredCountiesActual(); }}>
+              {territoryOptions.map(o => <option key={o || "blank"} value={o}>{o}</option>)}
+            </Select>
+            
+            <Select id="county" label="County" value={selectedCounty} onChange={v => { setSelectedCounty(v); }}>
               {countyOptions.map(o => <option key={o.value || "blank"} value={o.value}>{o.label}</option>)}
             </Select>
 
-            <Select id="days" label="Forecast Period" value={String(days)} onChange={v => { const d = Number(v); setDays(d); doRefresh(selected, d, model); }}>
+            <Select id="days" label="Forecast Period" value={String(days)} onChange={v => { const d = Number(v); setDays(d); }}>
               <option value="1">Next Day</option>
             </Select>
 
