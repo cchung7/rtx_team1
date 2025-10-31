@@ -43,7 +43,7 @@ const dangerLinePlugin = {
       const y = yScale.getPixelForValue(th.value);
       if (y < top || y > bottom) return;
 
-      ctx.strokeStyle = th.color + "66";
+      ctx.strokeStyle = th.color + "77";
       ctx.lineWidth = 1.3;
       ctx.setLineDash([6, 4]);
       ctx.beginPath();
@@ -107,7 +107,7 @@ export default function AqiChart({ history = [], overlayPrediction }) {
     labels,
     datasets: [
       {
-        label: "AQI (Higher AQI Means Worse Air Quality)",
+        label: "30-Day Historical AQI Trend",
         data: values,
         borderColor: "#2563eb",
         borderWidth: 3,
@@ -117,7 +117,7 @@ export default function AqiChart({ history = [], overlayPrediction }) {
         pointBorderWidth: 2,
         pointRadius: 5,
         tension: 0.35,
-        fill: true,
+        fill: false,
       },
     ],
   };
@@ -129,7 +129,12 @@ export default function AqiChart({ history = [], overlayPrediction }) {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: true },
+      legend: { display: true, labels: {
+          boxWidth: 0,
+          usePointStyle: true,
+          color: "#334155",
+          font: { size: 13, weight: "500" },
+      } },
     },
     scales: {
       y: {

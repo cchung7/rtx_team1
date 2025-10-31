@@ -171,7 +171,7 @@ export default function App() {
 
         {/* Historical */}
         <section className="card shadow-md hover:shadow-xl border border-slate-200 transition-shadow">
-          <h2 className="section-title">30-Day Historical AQI Trend</h2>
+          <h2 className="section-title">Historical AQI Trend</h2>
           <AqiChart history={history} overlayPrediction={singlePrediction} />
           <AqiLegend />
         </section>
