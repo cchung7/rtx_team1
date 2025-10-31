@@ -2,12 +2,12 @@ import React, { useRef, useState, useLayoutEffect } from "react";
 
 const TOOLTIP_TEXT = {
   Algorithm:
-    "Gradient Boosting Decision Tree (GBDT) ensemble method that builds decision trees iteratively to minimize prediction error in regression tasks.",
+    "A Gradient Boosting Decision Tree ensemble that builds trees iteratively to reduce prediction error.",
   MSE: "Average squared prediction error (smaller value means lower error).",
   RMSE:
-    "Average prediction error in physical AQI units (smaller value means higher accuracy).",
+    "Average prediction error in AQI units (smaller value means higher accuracy).",
   "R2 Score":
-    "72% of the AQI variance is explained by the model. This indicates strong predictive performance.",
+    "Portion of variance explained by the model. Closer to 1.0 is better.",
 };
 
 function MetricBox({ label, value }) {
@@ -47,12 +47,12 @@ function MetricBox({ label, value }) {
       ref={wrapperRef}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="relative flex flex-col justify-center items-center text-center bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition"
+      className="relative bg-white border border-slate-200 rounded-lg p-3 text-center shadow-sm"
     >
-      <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
+      <div className="text-xs uppercase tracking-wide text-slate-500 text-center">
         {label}
       </div>
-      <div className="text-lg font-semibold text-slate-900">
+      <div className="text-lg font-semibold text-slate-900 mt-1 text-center">
         {value ?? "--"}
       </div>
 
@@ -97,7 +97,6 @@ function MetricBox({ label, value }) {
         >
           {tooltipText}
 
-          {/* arrow for tooltip */}
           {pos === "right" && (
             <div className="absolute top-1/2 -translate-y-1/2 -left-1 w-2 h-2 bg-slate-900/95 rotate-45" />
           )}
@@ -116,7 +115,7 @@ function MetricBox({ label, value }) {
 export default function StatsStrip({ algorithm, mse, rmse, r2 }) {
   return (
     <div className="card shadow-md hover:shadow-xl border border-slate-200 transition-shadow mt-6">
-      <h2 className="section-title text-center mb-4">Model Information</h2>
+      <h2 className="section-title">Model Information</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <MetricBox label="Algorithm" value={algorithm} />
         <MetricBox
