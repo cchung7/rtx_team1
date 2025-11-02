@@ -223,6 +223,8 @@ export default function App() {
                   aqi={Math.round(singlePrediction?.predicted_aqi ?? NaN)}
                   category={singlePrediction?.predicted_category}
                   date={singlePrediction?.forecast_date}
+                  county={JSON.parse(selectedCounty)?.county}
+                  state={JSON.parse(selectedCounty)?.state}
                 />
               ) : (
                 <div className="text-slate-600">

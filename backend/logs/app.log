@@ -3941,3 +3941,109 @@
 {"timestamp": "2025-11-01T19:35:21", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 42 ms (days=1)"}
 {"timestamp": "2025-11-01T19:35:21", "level": "INFO", "operation": "validation", "message": "Historical request: county=Tarrant, state=Texas, days=30"}
 {"timestamp": "2025-11-01T19:35:21", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:02:23", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:02:23", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:02:24", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:02:24", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:02:24", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:02:24", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:02:24", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:02:24", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:02:27", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:02:34", "level": "INFO", "operation": "ingestion", "message": "Fetching counties"}
+{"timestamp": "2025-11-02T11:02:34", "level": "INFO", "operation": "validation", "message": "Metrics request: model=balanced"}
+{"timestamp": "2025-11-02T11:02:34", "level": "INFO", "operation": "ingestion", "message": "Counties retrieved: 995"}
+{"timestamp": "2025-11-02T11:03:45", "level": "INFO", "operation": "validation", "message": "Prediction request: county=Dallas, state=Texas, model=balanced, days=1"}
+{"timestamp": "2025-11-02T11:03:46", "level": "INFO", "operation": "validation", "message": "Historical request: county=Dallas, state=Texas, days=30"}
+{"timestamp": "2025-11-02T11:03:46", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:03:46", "level": "INFO", "operation": "feature_generation", "message": "Recent rows for features: 30"}
+{"timestamp": "2025-11-02T11:03:50", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 5462 ms (days=1)"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:23:24", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:23:27", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:23:28", "level": "INFO", "operation": "ingestion", "message": "Fetching counties"}
+{"timestamp": "2025-11-02T11:23:28", "level": "INFO", "operation": "ingestion", "message": "Counties retrieved: 995"}
+{"timestamp": "2025-11-02T11:23:28", "level": "INFO", "operation": "validation", "message": "Metrics request: model=balanced"}
+{"timestamp": "2025-11-02T11:23:32", "level": "INFO", "operation": "validation", "message": "Prediction request: county=Dallas, state=Texas, model=balanced, days=1"}
+{"timestamp": "2025-11-02T11:23:32", "level": "INFO", "operation": "feature_generation", "message": "Recent rows for features: 30"}
+{"timestamp": "2025-11-02T11:23:32", "level": "INFO", "operation": "validation", "message": "Historical request: county=Dallas, state=Texas, days=30"}
+{"timestamp": "2025-11-02T11:23:32", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:23:35", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 2993 ms (days=1)"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:24:45", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:24:47", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:24:48", "level": "INFO", "operation": "ingestion", "message": "Fetching counties"}
+{"timestamp": "2025-11-02T11:24:48", "level": "INFO", "operation": "ingestion", "message": "Counties retrieved: 995"}
+{"timestamp": "2025-11-02T11:24:48", "level": "INFO", "operation": "validation", "message": "Metrics request: model=balanced"}
+{"timestamp": "2025-11-02T11:24:52", "level": "INFO", "operation": "validation", "message": "Prediction request: county=Dallas, state=Texas, model=balanced, days=1"}
+{"timestamp": "2025-11-02T11:24:52", "level": "INFO", "operation": "feature_generation", "message": "Recent rows for features: 30"}
+{"timestamp": "2025-11-02T11:24:52", "level": "INFO", "operation": "validation", "message": "Historical request: county=Dallas, state=Texas, days=30"}
+{"timestamp": "2025-11-02T11:24:52", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:24:53", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 1526 ms (days=1)"}
+{"timestamp": "2025-11-02T11:25:20", "level": "INFO", "operation": "validation", "message": "Prediction request: county=Bell, state=Texas, model=balanced, days=1"}
+{"timestamp": "2025-11-02T11:25:20", "level": "INFO", "operation": "validation", "message": "Historical request: county=Bell, state=Texas, days=30"}
+{"timestamp": "2025-11-02T11:25:20", "level": "INFO", "operation": "feature_generation", "message": "Recent rows for features: 30"}
+{"timestamp": "2025-11-02T11:25:20", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:25:20", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 79 ms (days=1)"}
+{"timestamp": "2025-11-02T11:25:23", "level": "INFO", "operation": "validation", "message": "Prediction request: county=Bowie, state=Texas, model=balanced, days=1"}
+{"timestamp": "2025-11-02T11:25:23", "level": "INFO", "operation": "feature_generation", "message": "Recent rows for features: 30"}
+{"timestamp": "2025-11-02T11:25:23", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 43 ms (days=1)"}
+{"timestamp": "2025-11-02T11:25:23", "level": "INFO", "operation": "validation", "message": "Historical request: county=Bowie, state=Texas, days=30"}
+{"timestamp": "2025-11-02T11:25:23", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:28:57", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:28:59", "level": "INFO", "operation": "ingestion", "message": "CSV data source loaded: 327123 records"}
+{"timestamp": "2025-11-02T11:28:59", "level": "INFO", "operation": "prediction", "message": "Balanced model loaded successfully"}
+{"timestamp": "2025-11-02T11:28:59", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:28:59", "level": "INFO", "operation": "general", "message": "Environment: development"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "general", "message": "Debug mode: True"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "general", "message": "Database: clap_db"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "general", "message": "============================================================"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "startup", "message": "Starting CLAP Flask API Server"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "ingestion", "message": "Fetching counties"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "ingestion", "message": "Counties retrieved: 995"}
+{"timestamp": "2025-11-02T11:29:00", "level": "INFO", "operation": "validation", "message": "Metrics request: model=balanced"}
+{"timestamp": "2025-11-02T11:29:04", "level": "INFO", "operation": "validation", "message": "Prediction request: county=Dallas, state=Texas, model=balanced, days=1"}
+{"timestamp": "2025-11-02T11:29:04", "level": "INFO", "operation": "feature_generation", "message": "Recent rows for features: 30"}
+{"timestamp": "2025-11-02T11:29:04", "level": "INFO", "operation": "validation", "message": "Historical request: county=Dallas, state=Texas, days=30"}
+{"timestamp": "2025-11-02T11:29:04", "level": "INFO", "operation": "ingestion", "message": "Historical rows returned: 30"}
+{"timestamp": "2025-11-02T11:29:06", "level": "INFO", "operation": "prediction", "message": "Prediction completed in 2752 ms (days=1)"}
