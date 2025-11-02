@@ -44,12 +44,6 @@ echo.
 echo OK Dependencies installed
 echo.
 
-REM Build React frontend
-cd frontend
-call npm install
-call npm run build
-cd ..
-
 REM Check if .env exists
 if not exist ".env" (
     echo Warning: No .env file found. Creating from .env.example...
@@ -58,6 +52,12 @@ if not exist ".env" (
         echo Please edit .env file with your database credentials.
     )
 )
+
+REM Build React/Vite frontend
+cd frontend
+call npm install
+call npm run build
+cd ..
 
 echo ==========================================
 echo Starting CLAP System...
@@ -72,4 +72,3 @@ echo.
 REM Start Flask app
 cd backend
 python app.py
-
