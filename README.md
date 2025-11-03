@@ -100,7 +100,7 @@ This project is part of SE 4485.001 coursework at the University of Texas at Dal
 
 - **Framework**: Flask (Python)
 - **ML Library**: LightGBM
-- **Frontend**: React, HTML5, CSS3, JavaScript, Chart.js
+- **Frontend**: HTML5, CSS3, JavaScript (React), Chart.js
 - **Data Source**: EPA AQI datasets (2024)
 - **Deployment**: Local development server (port 5001)
 
