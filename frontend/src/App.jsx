@@ -29,6 +29,13 @@ export default function App() {
   const [history, setHistory] = useState([]);
   const [prediction, setPrediction] = useState(null);
   const [metrics, setMetrics] = useState(null);
+  const [activeSelection, setActiveSelection] = useState(null);
+
+  // Parse dropdown selection
+  const draftSelection = useMemo(() => {
+    try { return selectedCounty ? JSON.parse(selectedCounty) : null; }
+    catch { return null; }
+  }, [selectedCounty]);
 
   // State dropdown
   const territoryOptions = useMemo(() => {
@@ -86,17 +93,23 @@ export default function App() {
     forecastDays = days,
     modelKey = model
   ) {
-    if (!val) return setErr("Please select a county first");
+    let sel = draftSelection;
+    if (val) {
+      try { sel = JSON.parse(val); }
+      catch { setErr("Invalid county selection"); return;}
+    }
+    if (!sel) return setErr("Please select a county first");
     try {
       setErr("");
       setLoading(true);
-      const { county, state } = JSON.parse(val);
+      const { county, state } = sel;
       const [hist, pred] = await Promise.all([
         getHistorical({ county, state, days: 30 }),
         postPredict({ county, state, model: modelKey, days: forecastDays }),
       ]);
       setHistory(hist);
       setPrediction(pred);
+      setActiveSelection({ county, state});
     } catch (e) {
       setErr(e.message);
     } finally {
@@ -210,7 +223,7 @@ export default function App() {
         </section>
 
         {/* Prediction */}
-        {prediction && (
+        {prediction && activeSelection && (
           <section className="grid md:grid-cols-3 gap-6">
             <div className="card shadow-md hover:shadow-xl border border-slate-200 transition-shadow md:col-span-1">
               <h2 className="section-title">
@@ -220,11 +233,15 @@ export default function App() {
               </h2>
               {days === 1 ? (
                 <PredictionCard
-                  aqi={Math.round(singlePrediction?.predicted_aqi ?? NaN)}
+                  aqi={
+                    Number.isFinite(singlePrediction?.predicted_aqi)
+                      ? Math.round(singlePrediction.predicted_aqi)
+                      : undefined
+                  }
                   category={singlePrediction?.predicted_category}
                   date={singlePrediction?.forecast_date}
-                  county={JSON.parse(selectedCounty)?.county}
-                  state={JSON.parse(selectedCounty)?.state}
+                  county={activeSelection.county}
+                  state={activeSelection.state}
                 />
               ) : (
                 <div className="text-slate-600">
