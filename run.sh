@@ -40,8 +40,16 @@ source venv/bin/activate # shellcheck disable=SC1091
 # Install dependencies
 echo ""
 echo "Installing dependencies..."
-pip install -q --upgrade pip
-pip install -q -r requirements.txt
+echo "This may take a few minutes, especially for ML libraries (LightGBM, NumPy, SciPy)..."
+echo ""
+
+# Upgrade pip first (show output)
+pip install --upgrade pip
+
+# Install dependencies with progress (remove -q to show progress)
+echo ""
+echo "Installing Python packages from requirements.txt..."
+pip install -r requirements.txt
 
 echo ""
 echo "✓ Dependencies installed"
@@ -66,14 +74,22 @@ if [ -n "$FRONTEND" ]; then
     cd "$FRONTEND"
     echo "Installing frontend dependencies..."
     npm install
-    echo "Starting React (Vite) dev server..."
-    npm run dev &         
+    
+    # Check if dist folder exists and is up to date
+    if [ ! -d "dist" ] || [ "package.json" -nt "dist" ]; then
+      echo "Building React (Vite) frontend..."
+      npm run build
+      echo "✓ Frontend built successfully"
+    else
+      echo "✓ Frontend already built"
+    fi
     cd "$ROOT"
   else
-    echo "ERROR: Node.js/npm not found."
+    echo "WARNING: Node.js/npm not found. Frontend will not be available."
+    echo "Install Node.js v22.21.0+ to enable the web dashboard."
   fi
 else
-  echo "ERROR: No frontend/ or dashboard/ folder found."
+  echo "WARNING: No frontend/ or dashboard/ folder found."
 fi
 
 echo "=========================================="
