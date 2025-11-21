@@ -18,7 +18,24 @@ def refresh_data():
         county = payload.get("county")
         state = payload.get("state")
         model_type = payload.get("model", "balanced")
-        days = int(payload.get("days", 1))
+        
+        # Validate days parameter
+        days_input = payload.get("days", 1)
+        try:
+            days = int(days_input)
+        except (ValueError, TypeError):
+            return jsonify({
+                "success": False, 
+                "error": f"Invalid 'days' parameter: '{days_input}'. Must be an integer."
+            }), 400
+        
+        # Valid days values: 1, 3, 7, or 14
+        valid_days = [1, 3, 7, 14]
+        if days not in valid_days:
+            return jsonify({
+                "success": False, 
+                "error": f"Invalid 'days' value: {days}. Must be one of: {', '.join(map(str, valid_days))}"
+            }), 400
 
         log_event(logging.INFO, f"Refresh request: county={county}, state={state}, model={model_type}, days={days}", operation="validation")
         if not county or not state:
